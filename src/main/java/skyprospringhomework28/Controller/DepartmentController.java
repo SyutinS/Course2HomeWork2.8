@@ -33,15 +33,14 @@ public class DepartmentController {
     public Optional<Employee> findMinSalaryDepartment(@RequestParam("departmentId") Integer department) {
         return employeeService.findMinSalaryDepartment(department);
     }
-    @RequestMapping("/all")
-    @GetMapping("all")
+
+    @GetMapping(value = "/all", params = {"departmentId"})
     public List<Employee> printEmployeeDepartment(@RequestParam("departmentId") Integer department) {
         return employeeService.printEmployeeDepartment(department);
     }
 
-    @GetMapping()
+    @GetMapping("/all")
     public String printEmployeeDepartment() {
         return employeeService.printEmployeeDepartmentAll();
     }
-
 }
