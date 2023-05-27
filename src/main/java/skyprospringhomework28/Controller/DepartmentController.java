@@ -23,12 +23,6 @@ public class DepartmentController {
     public String hello() {
         return " погнали ";
     }
-    // /departments/max-salary?departmentId=5
-    // /departments/min-salary?departmentId=5
-    // /departments/all?departmentId=5
-    // /departments/all
-
-    // Comparator.comparingInt(employee -> employee.getSalary())
 
     @GetMapping("/max-salary")
     public Optional<Employee> findMaxSalaryDepartment(@RequestParam("departmentId") Integer department) {
@@ -39,15 +33,15 @@ public class DepartmentController {
     public Optional<Employee> findMinSalaryDepartment(@RequestParam("departmentId") Integer department) {
         return employeeService.findMinSalaryDepartment(department);
     }
-
-    @GetMapping("/all")
+    @RequestMapping("/all")
+    @GetMapping("all")
     public List<Employee> printEmployeeDepartment(@RequestParam("departmentId") Integer department) {
         return employeeService.printEmployeeDepartment(department);
     }
 
-//    @GetMapping("/all")
-//    public List<Employee> printEmployeeDepartment() {
-//        return employeeService.printEmployeeDepartmentAll();
-//    }
+    @GetMapping()
+    public String printEmployeeDepartment() {
+        return employeeService.printEmployeeDepartmentAll();
+    }
 
 }

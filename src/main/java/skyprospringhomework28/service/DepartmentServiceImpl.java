@@ -12,24 +12,29 @@ public class DepartmentServiceImpl implements EmployeeService {
 
     @Override
     public Optional<Employee> findMaxSalaryDepartment(Integer department) {
-        return EmployeeList.getEmployeeList().stream().filter(d -> d.getDepartment() == department).
-                max(Comparator.comparingInt(Employee::getSalary));
+        return EmployeeList.getEmployeeList().stream().filter(d -> d.getDepartment() == department)
+                .max(Comparator.comparingInt(Employee::getSalary));
     }
 
     @Override
     public Optional<Employee> findMinSalaryDepartment(Integer department) {
-        return EmployeeList.getEmployeeList().stream().filter(d -> d.getDepartment() == department).
-                min(Comparator.comparingInt(Employee::getSalary));
+        return EmployeeList.getEmployeeList().stream().filter(d -> d.getDepartment() == department)
+                .min(Comparator.comparingInt(Employee::getSalary));
     }
 
     @Override
     public List<Employee> printEmployeeDepartment(Integer department) {
-        return EmployeeList.getEmployeeList().stream().filter(d -> d.getDepartment() == department).
-                collect(Collectors.toUnmodifiableList());
+        return EmployeeList.getEmployeeList().stream()
+                .filter(d -> d.getDepartment() == department)
+                .collect(Collectors.toUnmodifiableList());
     }
 
-//    @Override
-//    public List<Employee> printEmployeeDepartmentAll() {
-//    }
+    @Override
+    public String printEmployeeDepartmentAll() {
+        Map<Integer, List<Employee>> employeesDep =
+        EmployeeList.getEmployeeList().stream()
+                .collect(Collectors.groupingBy(Employee::getDepartment));
+        return " Отдел " + employeesDep;
+    }
 
 }

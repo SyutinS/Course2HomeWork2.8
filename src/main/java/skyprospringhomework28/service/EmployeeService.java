@@ -13,6 +13,6 @@ interface EmployeeService {
 
     List<Employee> printEmployeeDepartment(Integer department);
 
-//    List<Employee> printEmployeeDepartmentAll();
+    String printEmployeeDepartmentAll();
 
 }
